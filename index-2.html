@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="mn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Монгол Хууль Зүйн Бодлого</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3efe7;--card:#fffdf9;--ink:#13263a;--tx:#2b3d48;--mu:#74848a;--ln:#e6dfd3;--gold:#d9a95b;--rose:#a8566a;--teal:#3f8077;--soft:#f6f1e8;--sh:0 14px 40px rgba(19,38,58,.09);--serif:"Playfair Display",Georgia,serif}
+@media(prefers-color-scheme:dark){:root{--bg:#0d1721;--card:#15232f;--ink:#f1e9da;--tx:#cdd9dc;--mu:#8ea1a8;--ln:#27394a;--soft:#1a2b39;--sh:0 14px 40px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;min-width:320px;background:var(--bg);color:var(--tx);font:15px/1.6 Manrope,system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:env(safe-area-inset-bottom)}
+button,input,textarea,select{font:inherit}button{cursor:pointer}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+h1,h2,h3{font-family:var(--serif);color:var(--ink);margin:0}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:max(10px,env(safe-area-inset-top)) max(16px,4vw) 10px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--ln)}
+.brand{display:flex;align-items:center;gap:11px;border:0;background:none;color:var(--ink);text-align:left;padding:0}
+.mark{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#13263a,#2a557a);color:var(--gold);font:700 15px var(--serif);box-shadow:0 6px 16px rgba(19,38,58,.3)}
+.brand b{display:block;font-size:11px;letter-spacing:.14em;color:var(--mu)}.brand strong{display:block;font:700 16px var(--serif)}
+.tabs{display:flex;gap:4px;padding:4px;border-radius:12px;background:var(--soft);border:1px solid var(--ln)}
+.tab{border:0;background:none;padding:8px 14px;border-radius:9px;font-weight:700;font-size:13px;color:var(--mu)}
+.tab.on{background:var(--ink);color:var(--bg)}
+.view{display:none}.view.on{display:block;animation:in .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.wrap{max-width:1200px;margin:auto;padding:28px max(16px,4vw) 50px}
+.hero{position:relative;overflow:hidden;border-radius:26px;padding:clamp(28px,5vw,56px);color:#f6efe1;background:radial-gradient(circle at 85% 10%,rgba(217,169,91,.35),transparent 45%),radial-gradient(circle at 10% 100%,rgba(168,86,106,.35),transparent 50%),linear-gradient(135deg,#0f2133,#1d4468);box-shadow:var(--sh)}
+.hero:after{content:"§";position:absolute;right:4%;bottom:-14%;font:700 clamp(200px,32vw,380px)/1 var(--serif);color:#fff;opacity:.06;pointer-events:none}
+.eyebrow{margin:0 0 10px;font-size:11px;font-weight:800;letter-spacing:.18em;color:var(--gold)}
+.hero h1{color:#fff;font-size:clamp(34px,6vw,64px);line-height:1.05;letter-spacing:-.02em;max-width:640px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p.lead{max-width:520px;color:#cdd8de;margin:18px 0 26px}
+.row{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.btn{display:inline-flex;align-items:center;gap:7px;border-radius:12px;padding:11px 18px;font-weight:800;font-size:14px;border:1px solid var(--ln);background:var(--card);color:var(--ink);transition:transform .15s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(19,38,58,.15)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#13263a}
+.btn.ghost{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3);color:#fff}
+.flow{position:relative;z-index:1;margin-top:28px;display:flex;flex-wrap:wrap;gap:8px;font-size:12px;font-weight:700}
+.flow span{padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+.stat{padding:18px 20px;border-radius:18px;background:var(--card);border:1px solid var(--ln);border-top:4px solid var(--c);box-shadow:var(--sh)}
+.stat span{font-size:12px;color:var(--mu);font-weight:700}.stat strong{display:block;font:700 36px/1.1 var(--serif);color:var(--ink);margin-top:4px}
+.grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;align-items:start}
+.card{padding:24px;border-radius:20px;background:var(--card);border:1px solid var(--ln);box-shadow:var(--sh)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.head h2{font-size:24px}
+.search{display:flex;gap:6px;align-items:center;padding:8px 12px;border-radius:10px;border:1px solid var(--ln);background:var(--soft);color:var(--mu);flex:1;min-width:140px;max-width:220px}
+.search input{border:0;outline:0;background:none;width:100%;color:var(--tx);font-size:13px}
+.case{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;padding:14px 8px;border-bottom:1px solid var(--ln);border-radius:12px;transition:background .2s}
+.case:hover{background:var(--soft)}
+.ci{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--soft);color:var(--teal);font-size:18px}
+.case b{color:var(--ink);display:block}.case small{color:var(--mu)}
+.bar{height:6px;border-radius:99px;background:var(--ln);overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .6s}
+.cm{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.st{border:0;border-radius:6px;padding:4px 9px;font-size:10px;font-weight:800;background:var(--soft);color:var(--mu)}
+.st.a{background:#f6e8cc;color:#7a5a17}.st.d{background:#dcefe6;color:#2b6a55}
+.del{border:0;background:none;color:var(--rose);font-size:12px;font-weight:700;padding:2px}
+.empty{padding:26px;text-align:center;color:var(--mu)}
+.dom{display:flex;align-items:center;gap:12px;padding:10px 4px;border-bottom:1px solid var(--ln)}
+.dm{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;color:#fff;font-size:11px;font-weight:800}
+.dom b{color:var(--ink);font-size:14px;display:block;line-height:1.3}.dom small{color:var(--mu);font-size:12px}
+.note{margin:22px 2px 0;color:var(--mu);font-size:12px}
+.fh{position:sticky;top:61px;z-index:5;padding:12px max(16px,4vw);background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--ln)}
+.fh .in{max-width:1200px;margin:auto;display:flex;align-items:center;gap:14px}
+.fh h1{font-size:20px;flex:1}.pct{font-weight:800;color:var(--gold);font-size:14px}
+.fh .bar{margin:8px auto 0;max-width:1200px}
+.fl{display:grid;grid-template-columns:230px 1fr;gap:28px;max-width:1200px;margin:auto;padding:26px max(16px,4vw) 50px}
+.side{position:sticky;top:130px;align-self:start;display:flex;flex-direction:column;gap:2px}
+.side h3{font:800 11px Manrope;letter-spacing:.14em;color:var(--mu);margin-bottom:10px}
+.side a{padding:9px 12px;border-radius:10px;color:var(--mu);text-decoration:none;font-size:13px;font-weight:700;border-left:3px solid transparent}
+.side a.on{background:var(--card);color:var(--ink);border-left-color:var(--rose);box-shadow:var(--sh)}
+.ethic{margin-top:14px;padding:12px;border-radius:12px;background:var(--soft);font-size:12px;color:var(--mu)}
+.fi h2{font-size:clamp(28px,4.5vw,46px);line-height:1.08;letter-spacing:-.02em}.fi h2 em{color:var(--rose)}
+.fi>p{max-width:640px;color:var(--mu)}
+.method{display:inline-block;margin-top:6px;padding:10px 16px;border-radius:12px;background:var(--soft);border:1px dashed var(--gold);font-weight:800;color:var(--ink);font-size:13px}
+.sec{margin-top:20px;padding:24px;border-radius:20px;background:var(--card);border:1px solid var(--ln);box-shadow:var(--sh);scroll-margin-top:140px}
+.sec>header{display:flex;gap:14px;align-items:flex-start;margin-bottom:12px}
+.no{display:grid;place-items:center;min-width:38px;height:38px;border-radius:11px;background:var(--ink);color:var(--gold);font:700 14px var(--serif)}
+.sec h3{font-size:19px}.sec header p{margin:2px 0 0;color:var(--mu);font-size:13px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.fields.f4{grid-template-columns:repeat(4,1fr)}
+label.f{display:block;margin:10px 0}label.f span{display:block;margin-bottom:6px;font-size:12px;font-weight:800;color:var(--tx)}
+.f input,.f textarea,.f select,.modal input,.modal select{width:100%;padding:11px 13px;border-radius:11px;border:1px solid var(--ln);background:var(--soft);color:var(--tx);outline:0;transition:border .2s,box-shadow .2s}
+.f textarea{resize:vertical}
+.f input:focus,.f textarea:focus,.f select:focus,.modal input:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(217,169,91,.2)}
+.scene{margin:12px 0;padding:16px;border-radius:16px;background:var(--soft);border:1px solid var(--ln)}
+.sh{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--rose)}
+.sh input{width:140px;margin-left:auto;padding:6px 9px}
+.chk{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.chk div{padding:10px 12px;border-radius:10px;background:#e6f2ec;color:#2b6a55;font-size:12px;font-weight:700}
+@media(prefers-color-scheme:dark){.chk div{background:#1d3a33;color:#8fd3b8}.st.a{background:#3a3016;color:#e8c679}.st.d{background:#1d3a33;color:#8fd3b8}}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-top:22px;color:var(--mu);font-size:12px}
+.modal{position:fixed;inset:0;z-index:30;display:none;place-items:center;padding:20px;background:rgba(10,20,30,.6);backdrop-filter:blur(4px)}
+.modal.open{display:grid}.modal .box{width:min(520px,100%);padding:28px;border-radius:22px;background:var(--card);box-shadow:0 30px 80px rgba(0,0,0,.4);animation:in .3s both}
+.box h2{font-size:26px;margin-bottom:6px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,30px);opacity:0;padding:12px 20px;border-radius:12px;background:var(--ink);color:var(--bg);font-weight:700;font-size:13px;transition:all .3s;z-index:40;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.stats{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}.fl{display:block}.side{display:none}.fields.f4{grid-template-columns:1fr 1fr}.brand b{display:none}}
+@media(max-width:560px){.fields,.fields.f4,.chk{grid-template-columns:1fr}.case{grid-template-columns:40px 1fr}.cm{grid-column:1/-1;flex-direction:row;justify-content:space-between;align-items:center}.top{padding-inline:12px}.tab{padding:8px 11px}.card,.sec{padding:18px}.fh{top:57px}}
+@media print{.top,.fh,.side,.foot,.btn,.del{display:none!important}body{background:#fff}.sec{box-shadow:none;break-inside:avoid}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <button class="brand" onclick="showView('dashboard')"><span class="mark">ХЗ</span><span><b>МОНГОЛ ХУУЛЬ ЗҮЙН</b><strong>Бодлого</strong></span></button>
+  <nav class="tabs"><button class="tab on" data-v="dashboard" onclick="showView('dashboard')">Бодлого</button><button class="tab" data-v="film" onclick="showView('film')">Кино задлан</button></nav>
+</header>
+
+<section id="dashboard" class="view on"><main class="wrap">
+  <div class="hero">
+    <p class="eyebrow" style="position:relative;z-index:1">ЭРХ ЗҮЙН ШИЙДЛИЙН АЖЛЫН ШИРЭЭ</p>
+    <h1 style="position:relative;z-index:1">Асуудлыг <em>системтэй</em> бодъё.</h1>
+    <p class="lead" style="position:relative;z-index:1">Үйл баримтаас дүгнэлт хүртэлх бодолтын алхам бүрийг баримтжуулж, өөрийн үндэслэлээ шалгаарай.</p>
+    <div class="row"><button class="btn gold" onclick="openModal()">＋ Шинэ бодлого эхлүүлэх</button><button class="btn ghost" onclick="showView('film')">🎬 Кино задлах</button></div>
+    <div class="flow"><span>Үйл баримт</span><span>→ Хэм хэмжээ</span><span>→ Дүгнэлт</span></div>
+  </div>
+  <section id="stats" class="stats"></section>
+  <section class="grid">
+    <div class="card"><div class="head"><div><p class="eyebrow" style="color:var(--rose);margin:0">СҮҮЛИЙН АЖЛУУД</p><h2>Миний бодлогууд</h2></div><label class="search">⌕<input id="search" placeholder="Хайх"></label></div><div id="cases"></div></div>
+    <div class="card"><p class="eyebrow" style="color:var(--rose);margin:0">МЕТОДОЛОГИ</p><h2 style="font-size:24px;margin-bottom:8px">Системтэй бодолт</h2><div id="domains"></div></div>
+  </section>
+  <p class="note">ⓘ Энэхүү систем нь хууль зүйн сургалт, судалгаа, дүн шинжилгээнд туслах хэрэгсэл бөгөөд мэргэжлийн хууль зүйн зөвлөгөө, эрх бүхий байгууллагын шийдвэрийг орлохгүй. Мэдээлэл зөвхөн таны хөтөч дээр хадгалагдана.</p>
+</main></section>
+
+<section id="film" class="view">
+  <div class="fh"><div class="in"><h1>Киноны сэтгэл зүйн задлан</h1><span class="pct" id="pct">0%</span><button class="btn" onclick="saveFilm()">Хадгалах</button></div><div class="bar"><i id="fbar" style="width:0"></i></div></div>
+  <div class="fl">
+    <aside class="side"><h3>СЭТГЭЛ ЗҮЙН ЛИНЗ</h3><div id="steps"></div><div class="ethic">ⓘ Дүрийг оношлохгүй. Ажиглалт, яриа, үйлдэл, орчны нотолгоонд тулгуурлан тайлбарлана.</div></aside>
+    <main class="fi">
+      <p class="eyebrow" style="color:var(--rose)">СЭТГЭЛ ЗҮЙН ҮҮДНЭЭС КИНО ЗАДЛАХ</p>
+      <h2>Киноны дотоод хөдөлгөөнийг <em>ажиглаж, тайлбарлая.</em></h2>
+      <p>Сайн задлан бол “дүр ийм хүн” гэж шошголох биш. Түүний хүсэл, айдас, сонголт, харилцаа хэрхэн өөрчлөгдөж байгааг сцений нотолгоотой холбосон тайлбар юм.</p>
+      <span class="method">Ажиглалт → Таамаг → Нотолгоо</span>
+      <form id="ff" onsubmit="return false"></form>
+      <div class="foot"><span>ⓘ Сургалт, судалгааны тайлбар; эмнэлзүйн оношилгоо биш.</span>
+        <div class="row"><button class="btn" onclick="exportMd()">Markdown татах</button><button class="btn" onclick="exportWord()">Word татах</button><button class="btn" onclick="window.print()">PDF хэвлэх</button><button class="btn gold" onclick="saveFilm()">Хадгалах</button></div></div>
+    </main>
+  </div>
+</section>
+
+<div id="modal" class="modal"><div class="box" role="dialog" aria-modal="true" aria-labelledby="mt">
+  <p class="eyebrow" style="color:var(--rose);margin:0">ШИНЭ АЖИЛ</p><h2 id="mt">Шинэ эрх зүйн бодлого</h2>
+  <label class="f"><span>Бодлогын нэр</span><input id="cname" placeholder="Жишээ: Гэрээний үүргийн зөрчил"></label>
+  <label class="f"><span>Салбар</span><select id="cdom"></select></label>
+  <div class="row" style="justify-content:flex-end;margin-top:18px"><button class="btn" onclick="closeModal()">Цуцлах</button><button class="btn gold" onclick="createCase()">Ажлыг эхлүүлэх</button></div>
+</div></div>
+<div id="toast" class="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+/* localStorage аюулгүй ажиллагаа: хаалттай/хувийн горимд ч код унахгүй */
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}};
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),2200)}
+
+const DOM=[['ЭР','Эрүүгийн эрх зүй',12,'#8a3347'],['ИР','Иргэний эрх зүй',14,'#245a63'],['ЗА','Захиргааны эрх зүй',14,'#80612a'],['ҮХ','Үндсэн хуулийн эрх зүй',12,'#5d4b72'],['ХӨ','Хөдөлмөрийн эрх зүй',15,'#3f8077'],['ГБ','Гэр бүлийн эрх зүй',12,'#a8566a'],['ЗӨ','Зөрчлийн эрх зүй',13,'#4a6a8a']];
+const ST=['НООРОГ','БОЛОВСРУУЛЖ БАЙГАА','ДУУССАН'],PR=[10,55,100];
+const today=()=>new Date().toISOString().slice(0,10);
+let cases=store.get('mongolaw-standalone-cases',null)||[
+ {name:'Гэрээний үүргийн гүйцэтгэл',domain:'Иргэний эрх зүй',date:'2026-09-18',status:ST[1],progress:62},
+ {name:'Захиргааны актын үндэслэл',domain:'Захиргааны эрх зүй',date:'2026-09-12',status:ST[0],progress:24},
+ {name:'Өв залгамжлалын маргаан',domain:'Иргэний эрх зүй',date:'2026-08-30',status:ST[2],progress:100}];
+const saveCases=()=>store.set('mongolaw-standalone-cases',cases);
+
+function render(){
+  const q=($('#search').value||'').trim().toLowerCase();
+  const n=s=>cases.filter(c=>c.status===s).length;
+  $('#stats').innerHTML=[['Нийт бодлого',cases.length,'#13263a'],['Ноорог',n(ST[0]),'#d9a95b'],['Боловсруулж буй',n(ST[1]),'#3f8077'],['Дууссан',n(ST[2]),'#a8566a']]
+   .map(x=>`<div class="stat" style="--c:${x[2]}"><span>${x[0]}</span><strong>${String(x[1]).padStart(2,'0')}</strong></div>`).join('');
+  const list=cases.map((c,i)=>({c,i})).filter(({c})=>(c.name+' '+c.domain+' '+c.date+' '+c.status).toLowerCase().includes(q));
+  $('#cases').innerHTML=list.length?list.map(({c,i})=>`<div class="case"><span class="ci">⚖</span><span><b>${esc(c.name)}</b><small>${esc(c.domain)} · ${esc(c.date||'Огноо тодорхойгүй')}</small><div class="bar"><i style="width:${+c.progress||0}%"></i></div></span><span class="cm"><button class="st ${c.status===ST[2]?'d':c.status===ST[1]?'a':''}" data-act="cycle" data-i="${i}" title="Төлөв солих">${esc(c.status)}</button><button class="del" data-act="del" data-i="${i}">Устгах</button></span></div>`).join('')
+   :`<div class="empty">${q?`“${esc(q)}” хайлтад тохирох бодлого олдсонгүй.`:'Одоогоор бодлого алга. “Шинэ бодлого эхлүүлэх” товчийг дарна уу.'}</div>`;
+  $('#domains').innerHTML=DOM.map(d=>`<div class="dom"><span class="dm" style="background:${d[3]}">${d[0]}</span><span><b>${d[1]}</b><small>${d[2]} алхамт аргачлал</small></span></div>`).join('');
+}
+$('#cases').addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]');if(!b)return;const i=+b.dataset.i,c=cases[i];if(!c)return;
+  if(b.dataset.act==='del'){if(!confirm(`“${c.name}” бодлогыг устгах уу? Буцаах боломжгүй.`))return;cases.splice(i,1)}
+  else{const k=(ST.indexOf(c.status)+1)%3;c.status=ST[k];c.progress=PR[k]}
+  saveCases();render();
+});
+$('#search').addEventListener('input',render);
+$('#cdom').innerHTML=DOM.map(d=>`<option>${d[1]}</option>`).join('');
+function openModal(){$('#modal').classList.add('open');setTimeout(()=>$('#cname').focus(),50)}
+function closeModal(){$('#modal').classList.remove('open')}
+function createCase(){const name=$('#cname').value.trim();if(!name){$('#cname').focus();return}
+  cases.unshift({name,domain:$('#cdom').value,date:today(),status:ST[0],progress:10});saveCases();$('#cname').value='';closeModal();render();toast('Бодлого нэмэгдлээ')}
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(e.key==='Enter'&&e.target.id==='cname')createCase()});
+
+function showView(v){$$('.view').forEach(x=>x.classList.toggle('on',x.id===v));$$('.tab').forEach(t=>t.classList.toggle('on',t.dataset.v===v));window.scrollTo(0,0)}
+
+/* ===== Киноны задлан ===== */
+const SEC=[
+['01','Дүрийн зан төлөв ба сэдэл','Айдас, хүсэл, дотоод зөрчил, өөрчлөлтийн замналыг шинжил.','characters','Дүрүүдийн хүсэл, айдас ба character arc','Гол дүр юу хүсэж байна вэ? Юунаас айж байна вэ? Үйл явдлын туршид хэрхэн өөрчлөгдөв?',6],
+['02','Сэтгэл зүйн онол, загвар','Онолыг онош тавихад бус, сэдэл ба зөрчлийг тайлбарлахад хэрэглэнэ.','framework','Фройд, Юнг болон бусад загвар','Id–Ego–Superego, хамгаалах механизм, Баатар/Сүүдэр/Persona... (онош биш, тайлбарын түвшинд)',7],
+['03','Дүрслэл ба орчны сэтгэл зүй','Өнгө, гэрэл, камерын өнцөг, бэлгэдэл, орчны дарамтыг ажигла.','visual','Дүрслэл, бэлгэдэл, орчин','Өнгө, гэрэл, камерын өнцөг, толь, ус, хаалга, орон зай дүрийн дотоод ертөнцтэй хэрхэн холбогдов?',7],
+['04','Хөгжим ба дууны эффект','Дуу чимээ үзэгчийн түгшүүр, эмпати, таамаглалд хэрхэн нөлөөлөв?','audio','Дууны сэтгэл зүй','Амьсгал, чимээгүй байдал, давтагдсан аялгуу, дууны өнгөний ажиглалт...',6],
+['05','Үзэгчийн сэтгэл зүй','Эмпати, найдваргүй өгүүлэгч, төөрөгдөл, киноны дараах үлдэгдлийг шинжил.','audience','Үзэгчийн хариу ба үлдсэн асуулт','Найруулагч үзэгчийг дүртэй хэрхэн адилтгав? Кино дуусахад ямар сэтгэл зүйн үлдэгдэл үлдээв?',6]];
+const META=[['title','Киноны нэр','Жишээ: Parasite'],['director','Найруулагч',''],['year','Гарсан он',''],['genre','Төрөл','']];
+const SF=[['event','Юу болсон бэ? — ажиглалт','Үйлдэл, яриа, камерын баримт...'],['emotion','Сэтгэл хөдлөл','Айдас, уур, гуниг, ичгүүр...'],['behavior','Зан төлөв','Зайлсхийх, дайрах, хянах...'],['thought','Дотоод хэрэгцээний таамаг','Боломжит тайлбар; баримт биш.']];
+const CHK=['Ажиглалт ба таамгийг ялгасан уу?','Сценийн нотолгоо ашигласан уу?','Дүрд эмнэлзүйн онош тавиагүй юу?','Орчин, эрх мэдлийг авч үзсэн үү?'];
+const blank=()=>({time:'',event:'',emotion:'',behavior:'',thought:'',concept:'',evidence:''});
+let scenes=[blank()];
+
+$('#ff').innerHTML=SEC.map((s,i)=>`<section class="sec" id="s${i+1}"><header><b class="no">${s[0]}</b><div><h3>${s[1]}</h3><p>${s[2]}</p></div></header>${i===0?`<div class="fields f4">${META.map(m=>`<label class="f"><span>${m[1]}</span><input data-film="${m[0]}" placeholder="${m[2]}"></label>`).join('')}</div>`:''}<label class="f"><span>${s[4]}</span><textarea data-film="${s[3]}" rows="${s[6]}" placeholder="${esc(s[5])}"></textarea></label></section>`).join('')+
+`<section class="sec" id="s6"><header><b class="no">06</b><div style="flex:1"><h3>Сценийн баримтжуулалт ба дүгнэлт</h3><p>Ажиглалт, таамаг, нотолгоог ялгаж бичээд дүгнэлтээ нэгтгэ.</p></div><button class="btn" type="button" id="addsc">＋ Сцен</button></header><div id="scenes"></div><label class="f"><span>Эцсийн дүгнэлт</span><textarea data-film="conclusion" rows="7" placeholder="Киноны гол сэтгэл зүйн зөрчил юу байсан бэ? Дүрүүд хэрхэн өөрчлөгдөв?"></textarea></label><div class="chk">${CHK.map(c=>`<div>✓ ${c}</div>`).join('')}</div></section>`;
+$('#steps').innerHTML=SEC.map((s,i)=>`<a href="#s${i+1}" data-s="s${i+1}">${s[0]} ${s[1]}</a>`).join('')+'<a href="#s6" data-s="s6">06 Сцен ба дүгнэлт</a>';
+
+function renderScenes(){$('#scenes').innerHTML=scenes.map((s,i)=>`<div class="scene"><div class="sh">СЦЕН ${String(i+1).padStart(2,'0')}<input placeholder="Цаг / хэсэг" data-i="${i}" data-k="time" value="${esc(s.time)}">${scenes.length>1?`<button type="button" class="del" data-rm="${i}" title="Сцен устгах">✕</button>`:''}</div><div class="fields">${SF.map(f=>`<label class="f"><span>${f[1]}</span><textarea rows="3" data-i="${i}" data-k="${f[0]}" placeholder="${f[2]}">${esc(s[f[0]])}</textarea></label>`).join('')}</div><div class="fields"><label class="f"><span>Сэтгэл зүйн ойлголт</span><input data-i="${i}" data-k="concept" value="${esc(s.concept)}" placeholder="Хамгаалах механизм, Shadow..."></label><label class="f"><span>Киноны нотолгоо / эшлэл</span><input data-i="${i}" data-k="evidence" value="${esc(s.evidence)}" placeholder="Яриа, дүрслэл, дуу хөгжим..."></label></div></div>`).join('')}
+$('#scenes').addEventListener('input',e=>{const t=e.target;if(t.dataset.k){scenes[+t.dataset.i][t.dataset.k]=t.value;progress();autosave()}});
+$('#scenes').addEventListener('click',e=>{const b=e.target.closest('[data-rm]');if(b&&confirm('Энэ сценийг устгах уу?')){scenes.splice(+b.dataset.rm,1);renderScenes();progress();autosave()}});
+$('#addsc').onclick=()=>{scenes.push(blank());renderScenes()};
+
+const fields=()=>$$('[data-film]');
+function filmData(){const d={scenes};fields().forEach(el=>d[el.dataset.film]=el.value);return d}
+function saveFilm(){store.set('mongolaw-standalone-film',filmData())?toast('Хадгалагдлаа ✓'):toast('Хөтөч хадгалахыг зөвшөөрсөнгүй')}
+let at;function autosave(){clearTimeout(at);at=setTimeout(()=>store.set('mongolaw-standalone-film',filmData()),600)}
+function progress(){const d=filmData();const k=['title','characters','framework','visual','audio','audience','conclusion'];
+  const done=k.filter(x=>(d[x]||'').trim()).length+(scenes.some(s=>s.event.trim()&&s.emotion.trim())?1:0);
+  const p=Math.round(done/8*100);$('#pct').textContent=p+'%';$('#fbar').style.width=p+'%'}
+fields().forEach(el=>el.addEventListener('input',()=>{progress();autosave()}));
+(function load(){const d=store.get('mongolaw-standalone-film',null);if(d){fields().forEach(el=>{if(d[el.dataset.film]!=null)el.value=d[el.dataset.film]});if(Array.isArray(d.scenes)&&d.scenes.length)scenes=d.scenes.map(s=>Object.assign(blank(),s))}renderScenes();progress()})();
+
+/* Зүүн цэсийн идэвхтэй хэсгийг гүйлгэхэд тодруулах */
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)$$('#steps a').forEach(a=>a.classList.toggle('on',a.dataset.s===e.target.id))}),{rootMargin:'-30% 0px -60% 0px'});$$('.sec').forEach(s=>io.observe(s))}
+
+function download(name,type,text){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+const fname=d=>(d.title||'kino-setgel-zui-zadlan').trim().replace(/[\\/:*?"<>|]+/g,'-');
+function exportMd(){const d=filmData(),v=x=>d[x]||'';
+ const t=`# КИНОНЫ СЭТГЭЛ ЗҮЙН ЗАДЛАН\n\n## Ерөнхий мэдээлэл\n\n- Нэр: ${v('title')||'Тодорхойлоогүй'}\n- Найруулагч: ${v('director')||'Тодорхойлоогүй'}\n- Он: ${v('year')||'Тодорхойлоогүй'}\n- Төрөл: ${v('genre')||'Тодорхойлоогүй'}\n\n`+SEC.map(s=>`## ${s[1]}\n\n${v(s[3])}\n\n`).join('')+`## Сценийн тэмдэглэл\n\n`+scenes.map((s,i)=>`### Сцен ${i+1} — ${s.time||''}\n\n- Ажиглалт: ${s.event}\n- Сэтгэл хөдлөл: ${s.emotion}\n- Зан төлөв: ${s.behavior}\n- Дотоод хэрэгцээний таамаг: ${s.thought}\n- Ойлголт: ${s.concept}\n- Нотолгоо: ${s.evidence}`).join('\n\n')+`\n\n## Дүгнэлт\n\n${v('conclusion')}\n\n> Энэхүү задлан нь эмнэлзүйн онош биш.`;
+ download(fname(d)+'.md','text/markdown;charset=utf-8',t)}
+function exportWord(){const d=filmData(),p=x=>`<p>${esc(d[x]||'').replace(/\n/g,'<br>')}</p>`;
+ const h=`<!doctype html><html lang="mn"><head><meta charset="utf-8"><title>Киноны сэтгэл зүйн задлан</title></head><body style="font-family:Arial;line-height:1.5"><h1>Киноны сэтгэл зүйн задлан</h1><p><b>Нэр:</b> ${esc(d.title)} · <b>Найруулагч:</b> ${esc(d.director)} · <b>Он:</b> ${esc(d.year)} · <b>Төрөл:</b> ${esc(d.genre)}</p>`+SEC.map(s=>`<h2>${s[1]}</h2>${p(s[3])}`).join('')+`<h2>Сценийн тэмдэглэл</h2><ol>${scenes.map(s=>`<li><b>${esc(s.time)}</b><br>Ажиглалт: ${esc(s.event)}<br>Сэтгэл хөдлөл: ${esc(s.emotion)}<br>Зан төлөв: ${esc(s.behavior)}<br>Таамаг: ${esc(s.thought)}<br>Ойлголт: ${esc(s.concept)}<br>Нотолгоо: ${esc(s.evidence)}</li>`).join('')}</ol><h2>Дүгнэлт</h2>${p('conclusion')}<p><i>Энэхүү задлан нь эмнэлзүйн онош биш.</i></p></body></html>`;
+ download(fname(d)+'.doc','application/msword;charset=utf-8','\ufeff'+h)}
+
+render();
+</script>
+</body>
+</html>
